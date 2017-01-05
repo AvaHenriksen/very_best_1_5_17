@@ -10,6 +10,10 @@ class Bookmark < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :users,
+             :through => :userbookmarks,
+             :source => :user
+
   # Validations
 
 end
