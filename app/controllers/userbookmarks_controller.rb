@@ -10,7 +10,7 @@ class UserbookmarksController < ApplicationController
   end
 
   def index
-    @userbookmarks = Userbookmark.all
+    @userbookmarks = Userbookmark.page(params[:page]).per(10)
 
     render("userbookmarks/index.html.erb")
   end
