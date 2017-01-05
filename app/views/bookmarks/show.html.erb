@@ -5,6 +5,15 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Venue</dt>
+      <dd>
+        <% if @bookmark.venue.present? %>
+          <a href="/venues/<%= @bookmark.venue_id %>">
+            <%= @bookmark.venue.neighborhood_id %>
+          </a>
+        <% end %>
+      </dd>
+
       <dt>Dish</dt>
       <dd>
         <% if @bookmark.dish.present? %>
@@ -14,11 +23,11 @@
         <% end %>
       </dd>
 
-      <dt>Venue</dt>
+      <dt>User</dt>
       <dd>
-        <% if @bookmark.venue.present? %>
-          <a href="/venues/<%= @bookmark.venue_id %>">
-            <%= @bookmark.venue.neighborhood_id %>
+        <% if @bookmark.user.present? %>
+          <a href="/users/<%= @bookmark.user_id %>">
+            <%= @bookmark.user.email %>
           </a>
         <% end %>
       </dd>
@@ -29,91 +38,14 @@
       <a href="/bookmarks" class="btn btn-primary">
         Back
       </a>
-      <a href="/bookmarks/<%= @bookmark.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_bookmark/<%= @bookmark.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @bookmark.user %>
+        <a href="/bookmarks/<%= @bookmark.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_bookmark/<%= @bookmark.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
-  </div>
-</div>
-
-<!-- A Bookmark has many userbookmarks -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Userbookmarks
-      </li>
-
-      <% @bookmark.userbookmarks.each do |userbookmark| %>
-        <li class="list-group-item">
-          <a href="/userbookmarks/<%= userbookmark.id %>">
-            <%= userbookmark.user_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/userbookmarks/<%= userbookmark.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/userbookmarks/<%= userbookmark.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_userbookmark/<%= userbookmark.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_userbookmark" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-      <!-- Label and input for bookmark_id -->
-      <input type="hidden" name="bookmark_id" value="<%= @bookmark.id %>">
-
-      <button class="btn btn-block btn-success">
-        Create Userbookmark
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Bookmark has many users -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Users
-      </li>
-
-      <% @bookmark.users.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.email %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/users/<%= user.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>
