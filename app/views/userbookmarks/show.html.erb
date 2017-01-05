@@ -17,12 +17,14 @@
       <a href="/userbookmarks" class="btn btn-primary">
         Back
       </a>
-      <a href="/userbookmarks/<%= @userbookmark.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_userbookmark/<%= @userbookmark.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @userbookmark.user %>
+        <a href="/userbookmarks/<%= @userbookmark.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_userbookmark/<%= @userbookmark.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

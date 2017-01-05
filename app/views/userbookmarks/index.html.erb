@@ -20,8 +20,11 @@
         <td><%= userbookmark.bookmark.dish_id %></td>
         <td>
           <a href="/userbookmarks/<%= userbookmark.id %>" class="btn btn-primary">Show</a>
-          <a href="/userbookmarks/<%= userbookmark.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_userbookmark/<%= userbookmark.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == userbookmark.user %>
+            <a href="/userbookmarks/<%= userbookmark.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_userbookmark/<%= userbookmark.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
