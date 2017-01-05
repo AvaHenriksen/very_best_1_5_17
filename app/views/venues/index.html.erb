@@ -17,7 +17,7 @@
 
       <% @venues.each do |venue| %>
       <tr>
-        <td><%= venue.neighborhood_id %></td>
+        <td><%= venue.neighborhood.neighborhood_name %></td>
         <td><%= venue.venue_name %></td>
         <td><%= venue.address %></td>
         <td>
