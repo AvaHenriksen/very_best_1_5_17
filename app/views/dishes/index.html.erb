@@ -70,6 +70,11 @@
       <%= f.text_field :cuisine_cuisine_name_cont, :class => "form-control", :placeholder => "Cuisine cuisine_name contains" %>
     </div>
 
+<div class="form-group">
+      <%= f.label :users_email_cont, "User email contains" %>
+      <%= f.text_field :users_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+    </div>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/dishes" class="btn btn-default btn-block mb-1">Clear filters</a>
