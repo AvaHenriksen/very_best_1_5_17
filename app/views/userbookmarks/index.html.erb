@@ -16,8 +16,20 @@
 
       <% @userbookmarks.each do |userbookmark| %>
       <tr>
-        <td><%= userbookmark.user.email %></td>
-        <td><%= userbookmark.bookmark.dish_id %></td>
+        <td>
+          <% if userbookmark.user.present? %>
+            <a href="/users/<%= userbookmark.user.id %>">
+              <%= userbookmark.user.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if userbookmark.bookmark.present? %>
+            <a href="/bookmarks/<%= userbookmark.bookmark.id %>">
+              <%= userbookmark.bookmark.dish_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/userbookmarks/<%= userbookmark.id %>" class="btn btn-primary">Show</a>
           
