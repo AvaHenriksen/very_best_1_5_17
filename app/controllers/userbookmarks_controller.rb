@@ -47,8 +47,6 @@ class UserbookmarksController < ApplicationController
 
   def update
     @userbookmark = Userbookmark.find(params[:id])
-
-    @userbookmark.user_id = params[:user_id]
     @userbookmark.bookmark_id = params[:bookmark_id]
 
     save_status = @userbookmark.save
