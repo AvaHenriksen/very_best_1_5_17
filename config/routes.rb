@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Userbookmark resource:
+  # CREATE
+  get "/userbookmarks/new", :controller => "userbookmarks", :action => "new"
+  post "/create_userbookmark", :controller => "userbookmarks", :action => "create"
+
+  # READ
+  get "/userbookmarks", :controller => "userbookmarks", :action => "index"
+  get "/userbookmarks/:id", :controller => "userbookmarks", :action => "show"
+
+  # UPDATE
+  get "/userbookmarks/:id/edit", :controller => "userbookmarks", :action => "edit"
+  post "/update_userbookmark/:id", :controller => "userbookmarks", :action => "update"
+
+  # DELETE
+  get "/delete_userbookmark/:id", :controller => "userbookmarks", :action => "destroy"
+  #------------------------------
+
   # Routes for the Neighborhood resource:
   # CREATE
   get "/neighborhoods/new", :controller => "neighborhoods", :action => "new"
