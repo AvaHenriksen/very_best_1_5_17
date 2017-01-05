@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "dishes#index"
   # Routes for the Userbookmark resource:
   # CREATE
   get "/userbookmarks/new", :controller => "userbookmarks", :action => "new"
