@@ -33,7 +33,7 @@
           Venue name
         </label>
 
-        <input type="text" id="venue_name" name="venue_name" placeholder="Venue name" class="form-control" value="<%= @venue.venue_name %>">
+        <textarea id="venue_name" name="venue_name" placeholder="Venue name" class="form-control" rows="3"><%= @venue.venue_name %></textarea>
       </div>
 
       <!-- Label and input for address -->
@@ -43,6 +43,15 @@
         </label>
 
         <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @venue.address %>">
+      </div>
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :cuisine_id, @venue.dish_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
