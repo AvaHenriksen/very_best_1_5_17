@@ -3,6 +3,10 @@ class Dish < ApplicationRecord
 
   belongs_to :cuisine
 
+  has_many   :locations,
+             :class_name => "Venue",
+             :dependent => :destroy
+
   has_many   :bookmarks,
              :dependent => :destroy
 
