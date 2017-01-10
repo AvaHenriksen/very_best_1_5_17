@@ -58,6 +58,11 @@
       <%= f.text_field :neighborhood_neighborhood_name_cont, :class => "form-control", :placeholder => "Neighborhood neighborhood_name contains" %>
     </div>
 
+<div class="form-group">
+      <%= f.label :users_email_cont, "User email contains" %>
+      <%= f.text_field :users_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+    </div>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/venues" class="btn btn-default btn-block mb-1">Clear filters</a>
