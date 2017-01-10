@@ -3,7 +3,6 @@ class CreateDishes < ActiveRecord::Migration
     create_table :dishes do |t|
       t.integer :cuisine_id
       t.string :dish_name
-      t.integer :venue_id
 
       t.timestamps
 
