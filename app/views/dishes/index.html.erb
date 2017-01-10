@@ -9,18 +9,6 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-  <%= f.label :venue_id, "Venue" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :venue_id_gteq, :class => "form-control", :placeholder => "Venue greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :venue_id_lteq, :class => "form-control", :placeholder => "Venue less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
     <%= f.label :dish_name_cont, "Dish name contains" %>
     <%= f.text_field :dish_name_cont, :class => "form-control", :placeholder => "Dish name contains" %>
   </div>
@@ -105,7 +93,13 @@
           <% end %>
         </td>
         <td><%= dish.dish_name %></td>
-        <td><%= dish.venue_id %></td>
+        <td>
+          <% if dish.venue.present? %>
+            <a href="/venues/<%= dish.venue.id %>">
+              <%= dish.venue.neighborhood_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/dishes/<%= dish.id %>" class="btn btn-primary">Show</a>
           <a href="/dishes/<%= dish.id %>/edit" class="btn btn-warning">Edit</a>

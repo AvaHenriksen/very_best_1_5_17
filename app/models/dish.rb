@@ -3,6 +3,8 @@ class Dish < ApplicationRecord
 
   belongs_to :cuisine
 
+  belongs_to :venue
+
   has_many   :bookmarks,
              :dependent => :destroy
 
