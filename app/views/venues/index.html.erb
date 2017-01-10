@@ -89,6 +89,7 @@
         <th>Neighborhood</th>
         <th>Venue name</th>
         <th>Address</th>
+        <th>Dish</th>
         <th>Actions</th>
       </tr>
 
@@ -103,6 +104,13 @@
         </td>
         <td><%= venue.venue_name %></td>
         <td><%= venue.address %></td>
+        <td>
+          <% if venue.dish.present? %>
+            <a href="/dishes/<%= venue.dish.id %>">
+              <%= venue.dish.cuisine_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/venues/<%= venue.id %>" class="btn btn-primary">Show</a>
           <a href="/venues/<%= venue.id %>/edit" class="btn btn-warning">Edit</a>

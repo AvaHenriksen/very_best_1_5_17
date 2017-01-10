@@ -1,6 +1,6 @@
 ActiveAdmin.register Venue do
 
- permit_params :neighborhood_id, :venue_name, :address
+ permit_params :neighborhood_id, :venue_name, :address, :dish_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
