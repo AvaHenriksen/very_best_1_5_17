@@ -22,6 +22,10 @@ class Venue < ApplicationRecord
 
   belongs_to :neighborhood
 
+  has_many   :dish_options,
+             :class_name => "Dish",
+             :dependent => :destroy
+
   has_many   :bookmarks,
              :dependent => :destroy
 
